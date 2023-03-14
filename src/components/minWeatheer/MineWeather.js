@@ -9,22 +9,24 @@ const MineWeather = () => {
    const [cityArr, setCityArr] = useState([]);
    const [weat, setWeat] = useState([]);
    const [loading, setLoading] = useState(true);
-   const [renderWEather, setRenderWEather] = useState(false)
+   const [renderWEather, setRenderWEather] = useState(false);
+   const [count, setCount] = useState(8);
 
    const { getCitiCoordinates, getWeatherInfo } = useApiServices();
 
    const cityC = (city) => {
       setCity(city);
+      getCitiCoordinates(city)
+      .then(cityArr => setCityArr(cityArr));
       dveather(item);
    }
 
    const getCityInf = () => {
-      getCitiCoordinates(city)
-         .then(cityArr => setCityArr(cityArr));
+
    }
 
    const dveather = (item) => {
-      getWeatherInfo(item.lat, item.lon)
+      getWeatherInfo(item.lat, item.lon, count)
          .then(weat => setWeat(weat))
          .then(onWeatherLoading)
          .then(onRenderWeather);
@@ -37,6 +39,10 @@ const MineWeather = () => {
    const onRenderWeather = () => {
       setRenderWEather(true)
    }
+   
+   const onCountChange = (num) => {
+      setCount(num)
+   } 
 
    function renderItem(arr) {
       const items = arr.map((item, i) => {
@@ -66,7 +72,9 @@ const MineWeather = () => {
    return (
       <>
          <input onInput={(e) => cityC(e.target.value)} />
-         <button onClick={() => getCityInf()}>getCityInfo</button>
+         <button onClick={()=> onCountChange(16)}>Днів: 2</button>
+         <button onClick={()=> onCountChange(24)}>Днів: 3</button>
+         <button onClick={()=> onCountChange(40)}>Днів: 5</button>
          {item}
          {loader}
          {content}

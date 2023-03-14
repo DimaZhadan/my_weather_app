@@ -19,7 +19,7 @@ const useApiServices = () => {
       return res.map(transformCoord)
    }
 
-   const getWeatherInfo = async (lat = 50.4500336, lon = 30.5241361, count = 8) => {
+   const getWeatherInfo = async (lat, lon, count) => {
 
       const data = await getResource(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=${count}&appid=${_apiKey}&lang=uk&units=metric`);
 
