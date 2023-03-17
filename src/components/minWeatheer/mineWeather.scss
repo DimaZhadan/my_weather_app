@@ -1,0 +1,59 @@
+.weather {
+   padding: 50px 0 20px 0;
+
+   &__city {
+      display: flex;
+      justify-content: center;
+      font-size: 30px;
+      font-family: 'Roboto', sans-serif;
+      color: #17171d;
+
+      &-def {
+         color: rgb(13, 190, 131);
+         cursor: pointer;
+      }
+
+      &-name {
+         color: #17171d;
+      }
+
+      &-wrapper {
+         margin: 20px auto 0;
+         width: 50%;
+         display: flex;
+         flex-direction: row;
+         justify-content: space-around;
+         align-items: center;
+         flex-wrap: wrap;
+      }
+
+      &-btn {
+         background: none;
+         height: 20px;
+         margin-top: 15px;
+         border: none;
+         outline: none;
+         cursor: pointer;
+      }
+   }
+
+   &__input {
+      margin-top: 40px;
+
+
+      &-field {
+         display: block;
+         margin: 0 auto;
+         width: 250px;
+         height: 50px;
+         border: none;
+         text-align: center;
+         border-radius: 30px;
+         font-family: 'Roboto', sans-serif;
+         font-size: 18px;
+         background: #ddf1f9;
+      }
+   }
+
+
+}

@@ -2,16 +2,16 @@
   text-align: center;
   width: 100%;
   height: 100%;
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#05abe0+0,53cbf1+27,87e0fd+74,87e0fd+74,87e0fd+80 */
-  background: #05abe0;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#a0d8ef+1,ddf1f9+45,feffff+98 */
+  background: #a0d8ef;
   /* Old browsers */
-  background: -moz-linear-gradient(top, #05abe0 0%, #53cbf1 27%, #87e0fd 74%, #87e0fd 74%, #87e0fd 80%);
+  background: -moz-linear-gradient(top, #a0d8ef 1%, #ddf1f9 45%, #feffff 98%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #05abe0 0%, #53cbf1 27%, #87e0fd 74%, #87e0fd 74%, #87e0fd 80%);
+  background: -webkit-linear-gradient(top, #a0d8ef 1%, #ddf1f9 45%, #feffff 98%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #05abe0 0%, #53cbf1 27%, #87e0fd 74%, #87e0fd 74%, #87e0fd 80%);
+  background: linear-gradient(to bottom, #a0d8ef 1%, #ddf1f9 45%, #feffff 98%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#05abe0', endColorstr='#87e0fd', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a0d8ef', endColorstr='#feffff', GradientType=0);
   /* IE6-9 */
 
   font-family: 'Roboto', sans-serif;
