@@ -1,5 +1,3 @@
-
-
 const useApiServices = () => {
    const _apiKey = '33e9bd7ed35b070d622767174ada772f';
 
@@ -19,7 +17,7 @@ const useApiServices = () => {
       return res.map(transformCoord)
    }
 
-   const getWeatherInfo = async (lat, lon, count) => {
+   const getWeatherInfo = async (lat = 50.445126, lon = 30.529944, count) => {
 
       const data = await getResource(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=${count}&appid=${_apiKey}&lang=uk&units=metric`);
 

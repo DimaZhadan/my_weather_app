@@ -5,7 +5,7 @@ import WeateherComp from '../weaterComp/WeatherComp';
 import Spinner from "../spinner/spinner";
 
 const MineWeather = () => {
-   const [city, setCity] = useState([]);
+   const [cityName, setCityName] = useState('');
    const [cityArr, setCityArr] = useState([]);
    const [weat, setWeat] = useState([]);
    const [loading, setLoading] = useState(true);
@@ -15,17 +15,12 @@ const MineWeather = () => {
    const { getCitiCoordinates, getWeatherInfo } = useApiServices();
 
    const cityC = (city) => {
-      setCity(city);
       getCitiCoordinates(city)
-      .then(cityArr => setCityArr(cityArr));
-      dveather(item);
-   }
-
-   const getCityInf = () => {
-
+         .then(cityArr => setCityArr(cityArr));
    }
 
    const dveather = (item) => {
+      setCityName(item.name)
       getWeatherInfo(item.lat, item.lon, count)
          .then(weat => setWeat(weat))
          .then(onWeatherLoading)
@@ -33,16 +28,25 @@ const MineWeather = () => {
    }
 
    const onWeatherLoading = () => {
-      setLoading(false)
+      setLoading(false);
    }
 
    const onRenderWeather = () => {
       setRenderWEather(true)
    }
-   
+
+   console.log(weat)
+
    const onCountChange = (num) => {
-      setCount(num)
-   } 
+      setCount(num);
+      onWeatherCountChange(num, weat)
+   }
+
+
+   const onWeatherCountChange = (count, weat) => {
+      getWeatherInfo(weat.city.coord.lat, weat.city.coord.lon, count)
+         .then(weat => setWeat(weat));
+   }
 
    function renderItem(arr) {
       const items = arr.map((item, i) => {
@@ -50,10 +54,12 @@ const MineWeather = () => {
             return null
          } else {
             return (
-               <button key={i}>
-                  <span onClick={() => dveather(item)}>{item.country}, </span>
-                  <span onClick={() => dveather(item)}>{item.name}, </span>
-                  <span onClick={() => dveather(item)}>{item.state}</span>
+               <button
+                  key={i}
+                  onClick={() => dveather(item)}>
+                  <span>{item.country}, </span>
+                  <span>{item.name}, </span>
+                  <span>{item.state}</span>
                </button>
             )
          }
@@ -64,19 +70,20 @@ const MineWeather = () => {
          </div>
       )
    }
-
    const item = renderItem(cityArr);
    const loader = loading ? <Spinner /> : null;
    const content = renderWEather ? <WeateherComp data={weat} /> : null;
+   const defCity = <div>{cityName}</div>;
 
    return (
       <>
-         <input onInput={(e) => cityC(e.target.value)} />
-         <button onClick={()=> onCountChange(16)}>Днів: 2</button>
-         <button onClick={()=> onCountChange(24)}>Днів: 3</button>
-         <button onClick={()=> onCountChange(40)}>Днів: 5</button>
+         <input onInput={(e) => cityC(e.target.value)} placeholder="Введіть назву міста/селища"/>
          {item}
+         <button onClick={() => onCountChange(16, weat)}>Дні: 2</button>
+         <button onClick={() => onCountChange(24, weat)}>Дні: 3</button>
+         <button onClick={() => onCountChange(40, weat)}>Днів: 5</button>
          {loader}
+         {defCity}
          {content}
       </>
    )
