@@ -35,17 +35,20 @@ const MineWeather = () => {
       setRenderWEather(true)
    }
 
-   console.log(weat)
-
    const onCountChange = (num) => {
-      setCount(num);
+      setRenderWEather(false)
+      setLoading(true)
+      setCount(num)
       onWeatherCountChange(num, weat)
    }
 
 
    const onWeatherCountChange = (count, weat) => {
+      setLoading(false)
+      setRenderWEather(true)
       getWeatherInfo(weat.city.coord.lat, weat.city.coord.lon, count)
-         .then(weat => setWeat(weat));
+         .then(weat => setWeat(weat))
+
    }
 
    function renderItem(arr) {
@@ -73,19 +76,24 @@ const MineWeather = () => {
    const item = renderItem(cityArr);
    const loader = loading ? <Spinner /> : null;
    const content = renderWEather ? <WeateherComp data={weat} /> : null;
-   const defCity = <div>{cityName}</div>;
+   const defCity = cityName ? <div>{cityName}</div> : null;
 
    return (
-      <>
-         <input onInput={(e) => cityC(e.target.value)} placeholder="Введіть назву міста/селища"/>
+      <div>
+         <div>Погодні умови у місті <span>{defCity}</span></div>
+         <div>
+            <input onInput={(e) => cityC(e.target.value)} placeholder="Введіть назву міста/селища" />
+         </div>
          {item}
-         <button onClick={() => onCountChange(16, weat)}>Дні: 2</button>
-         <button onClick={() => onCountChange(24, weat)}>Дні: 3</button>
-         <button onClick={() => onCountChange(40, weat)}>Днів: 5</button>
+         Оберіть період:
+         <div>
+            <button onClick={() => onCountChange(16)}>Дні: 2</button>
+            <button onClick={() => onCountChange(24)}>Дні: 3</button>
+            <button onClick={() => onCountChange(40)}>Днів: 5</button>
+         </div>
          {loader}
-         {defCity}
          {content}
-      </>
+      </div>
    )
 }
 
