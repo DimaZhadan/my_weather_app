@@ -83,33 +83,41 @@ const MineWeather = () => {
 
    return (
       <div className='weather'>
-         <div className='weather__city'>Погодні умови у місті: <label htmlFor='input-city'> {defCity}</label></div>
-         <div className='weather__input'>
-            <input
-               onInput={(e) => onCitySelect(e.target.value)}
-               placeholder="Введіть назву міста/селища"
-               className='weather__input-field'
-               id='input-city' />
-         </div>
-         <div className='weather__city-wrapper'>
-            {cities}
-         </div>
-         <div className="weather__count">
-            Оберіть період:
-            <div className='weather__count-wrapper'>
-               <button
-                  onClick={() => onCountChange(16)}
-                  className='weather__count-btn'>Дні: 2</button>
-               <button
-                  onClick={() => onCountChange(24)}
-                  className='weather__count-btn'>Дні: 3</button>
-               <button
-                  onClick={() => onCountChange(40)}
-                  className='weather__count-btn'>Днів: 5</button>
+         <div className="container">
+            <div className="weather__grid">
+            <div className="data">
+               <div className='weather__city'>Погодні умови у місті: <label htmlFor='input-city'> {defCity}</label></div>
+               <div className='weather__input'>
+                  <input
+                     onInput={(e) => onCitySelect(e.target.value)}
+                     placeholder="Введіть назву міста/селища"
+                     className='weather__input-field'
+                     id='input-city' />
+               </div>
+               <div className='weather__city-wrapper'>
+                  {cities}
+               </div>
+               <div className="weather__count">
+                  Оберіть період:
+                  <div className='weather__count-wrapper'>
+                     <button
+                        onClick={() => onCountChange(16)}
+                        className='weather__count-btn'>Дні: 2</button>
+                     <button
+                        onClick={() => onCountChange(24)}
+                        className='weather__count-btn'>Дні: 3</button>
+                     <button
+                        onClick={() => onCountChange(40)}
+                        className='weather__count-btn'>Днів: 5</button>
+                  </div>
+               </div>
+            </div>
+            <div className="content">
+               {loader}
+               {content}
+            </div>
             </div>
          </div>
-         {loader}
-         {content}
       </div>
    )
 }
