@@ -1,0 +1,8 @@
+.weater-items{
+   display: flex;
+   overflow: scroll;
+
+   &__item{
+      margin: 0 10px;
+   }
+}

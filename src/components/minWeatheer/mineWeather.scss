@@ -3,7 +3,7 @@
 
    &__grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 600px);
    }
 
    &__city {
@@ -30,10 +30,14 @@
       }
 
       &-btn {
+         display: flex;
+         justify-content: center;
+         align-items: center;
          background: none;
          height: 20px;
          margin-top: 15px;
          margin-right: 20px;
+         padding: 5px;
          border: none;
          outline: none;
          border-radius: 8px;
@@ -66,6 +70,7 @@
          width: 250px;
          height: 50px;
          border: none;
+         outline: none;
          text-align: center;
          border-radius: 30px;
          font-family: 'Roboto', sans-serif;
@@ -118,9 +123,14 @@
    .weather {
 
       &__grid {
-         display: grid;
-         grid-template-columns: 1fr;
-         grid-template-rows: repeat(2, 1fr);
+         grid-template-columns: 100%;
+         grid-template-rows: 450px 100%;
+         grid-auto-rows: auto;
+      }
+
+      &__city {
+         font-size: 25px;
+         flex-wrap: wrap;
       }
    }
 }
