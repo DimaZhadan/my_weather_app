@@ -14,6 +14,21 @@ const WeateherComp = (props) => {
       )
    }
 
+   function sviper(e) {
+      const container = document.querySelector('.weater-items');
+      let start = 0;
+      start = e.touches[0].clientX;
+      container.addEventListener('touchmove', event => {
+         let clientX = 0;
+         clientX = event.changedTouches[0];
+         let clientCoord = clientX.clientX
+         let positionX = clientCoord - start;
+
+         container.style.cssText = `transform: translateX(${positionX}px)`;
+      })
+
+   }
+
    function renderItem(weateherData) {
       const items = weateherData.map((item, i) => {
          return (
@@ -27,13 +42,18 @@ const WeateherComp = (props) => {
                <div>відчувається як: {Math.round(item.main.feels_like)} °C</div>
                <div>Вологість: {item.main.humidity} %</div>
                <div>Тиск: {item.main.pressure} гПк</div>
+               <div className='weater-items__wind'>
+                  {item.wind.speed} м/с
+               </div>
             </div>
          )
       })
 
       return (
-         <div className='weater-items'>
-            {items}
+         <div className='weater-items__wraper'>
+            <div className='weater-items' onTouchStart={(e) => sviper(e)}>
+               {items}
+            </div>
          </div>
       )
    }

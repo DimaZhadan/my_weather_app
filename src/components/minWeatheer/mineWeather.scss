@@ -4,6 +4,7 @@
    &__grid {
       display: grid;
       grid-template-columns: repeat(2, 600px);
+      grid-template-rows: 350px;
    }
 
    &__city {

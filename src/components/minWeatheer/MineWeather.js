@@ -93,7 +93,7 @@ const MineWeather = () => {
          <div className="container">
             <div className="weather__grid">
                <div className="data">
-                  <div className='weather__city'>Погодні умови у місті: <label htmlFor='input-city'> {defCity}</label></div>
+                  <div className='weather__city'>Погодні умови у місті: <label htmlFor='input-city'>{defCity}</label></div>
                   <div className='weather__input'>
                      <input
                         onInput={(e) => onCitySelect(e.target.value)}
