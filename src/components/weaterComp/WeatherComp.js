@@ -26,14 +26,14 @@ const WeateherComp = (props) => {
       start = e.touches[0].clientX;
       setStart(start);
 
-      container.addEventListener('touchmove', event => {
+      container.addEventListener('touchstart', event => {
 
          clientX = event.touches[0].clientX;
-         positionX += (clientX - start)/30;
+         positionX += (clientX - start)/20;
          setPositionX(positionX);
          console.log(positionX)
          container.style.cssText = `transform: translateX(${positionX}px)`;
-         container.removeEventListener('touchmove', event, false);
+         container.removeEventListener('touchstart', event, false);
       })
    }
 
