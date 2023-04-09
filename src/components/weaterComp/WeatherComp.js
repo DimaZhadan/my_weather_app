@@ -1,6 +1,10 @@
+import React, { useState } from 'react';
+
 import './weatherComp.scss';
 
 const WeateherComp = (props) => {
+   let [start, setStart] = useState(0);
+   let [positionX, setPositionX] = useState(0);
 
    const weateherData = props.data.list;
 
@@ -14,19 +18,23 @@ const WeateherComp = (props) => {
       )
    }
 
-   function sviper(e) {
+   let clientX;
+
+   const sviper = (e) => {
       const container = document.querySelector('.weater-items');
-      let start = 0;
+
       start = e.touches[0].clientX;
+      setStart(start);
+
       container.addEventListener('touchmove', event => {
-         let clientX = 0;
-         clientX = event.changedTouches[0];
-         let clientCoord = clientX.clientX
-         let positionX = clientCoord - start;
 
+         clientX = event.touches[0].clientX;
+         positionX += (clientX - start)/30;
+         setPositionX(positionX);
+         console.log(positionX)
          container.style.cssText = `transform: translateX(${positionX}px)`;
+         container.removeEventListener('touchmove', event, false);
       })
-
    }
 
    function renderItem(weateherData) {
